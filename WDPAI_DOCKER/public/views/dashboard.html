@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="public/scripts/mobile-nav.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,9 +16,41 @@
         <a href="#"><i class="fas fa-search"></i> Search</a><a href="#">
         <i class="fas fa-user"></i> Profile</a>
         <a href="#"><i class="fas fa-envelope"></i> Messages</a>
-        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+        <a href="#" id="menu"><i class="fas fa-cog"></i> Settings</a>
     </nav>
-    <h1>Dashboard</h1>
+    <div class="container flex-row-center-center">
+        <div class="sidebar">
+            <p>sidebar</p>
+        </div>
+        <div class="main">
+            <h1>Dashboard</h1>
+            <div class="projects">
+                <div class="card">
+                    <img src="https://picsum.photos/300/200" alt="Image 1">
+                    <h2>Title 1</h2>
+                    <p>Description 1</p>
+                  </div>
+                  
+                  <div class="card">
+                    <img src="https://picsum.photos/300/200" alt="Image 2">
+                    <h2>Title 2</h2>
+                    <p>Description 2</p>
+                  </div>
+                  
+                  <div class="card">
+                    <img src="https://picsum.photos/300/200" alt="Image 3">
+                    <h2>Title 3</h2>
+                    <p>Description 3</p>
+                  </div>
+                  
+                  <div class="card">
+                    <img src="https://picsum.photos/300/200" alt="Image 4">
+                    <h2>Title 4</h2>
+                    <p>Description 4</p>
+                  </div>
+            </div>
+        </div>
+    </div>
     <div class="add flex-column-center-center">
         <a href="#"><i class="fas fa-home"></i></a>
     </div>
