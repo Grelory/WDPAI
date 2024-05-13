@@ -15,31 +15,19 @@
     <?php include_once __DIR__ . '/shared/nav.html' ?>
 
     <div class="container flex-row-center-center">
-        <script src="public/scripts/search.js" defer></script>
-
         <div class="sidebar">
-            <input id="search" type="text" name="search" placeholder="search">
+            <input type="text" name="title" placeholder="title">
         </div>
-
-        <template id="project-card-template">
-            <div class="card">
-                <img src="">
-                <h2></h2>
-                <p></p>
-            </div>
-        </template>
-
         <div class="main">
-            <h1>DASHBOARD</h1>
+            <h1>ADD PROJECT</h1>
 
             <div class="projects flex-row-center-center">
-                <?php foreach($items as $item): ?>
-                    <div class="card">
-                        <img src="<?= $item->getPhotoUrl(); ?>" alt="Project 3">
-                        <h2><?= $item->getTitle(); ?></h2>
-                        <p><?= $item->getDescription(); ?></p>
-                    </div>
-                <?php endforeach; ?>
+                <form action="/project" method="POST" class="flex-column-center-center">
+                    <input type="text" name="title" placeholder="title">
+                    <textarea type="text" name="description" placeholder="description"></textarea>
+                    <input type="text" name="photoUrl" placeholder="photo url">
+                    <button type="submit">SIGN IN</button>
+                </form>
 
             </div>
         </div>
