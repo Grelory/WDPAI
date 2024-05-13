@@ -1,0 +1,1 @@
+document.querySelector('body div').innerHTML = '<p>Admin dashboard has not been implemented yet</p>'
