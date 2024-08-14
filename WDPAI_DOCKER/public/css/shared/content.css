@@ -1,4 +1,4 @@
-body div.content {
+body div#content {
     position: fixed;
     left: 5%;
     top: 20%;
