@@ -6,7 +6,7 @@ class Ticket {
 	public $user_id;
 	public $provider_id;
 	public $location_id;
-	public $transport_id;
+	public $transport_type_id;
 	public $ticket_type_id;
 	public $expiry_time;
 	public $purchase_time;
@@ -30,8 +30,8 @@ class Ticket {
         return $this->location_id;
     }
 
-    public function getTransportId() : string {
-        return $this->transport_id;
+    public function getTransportTypeId() : string {
+        return $this->transport_type_id;
     }
 
     public function getTicketTypeId() : string {
