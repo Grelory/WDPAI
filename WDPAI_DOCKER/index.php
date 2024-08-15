@@ -3,30 +3,38 @@
 require_once 'src/controllers/AppController.php';
 require_once 'src/controllers/DashboardController.php';
 require_once 'src/controllers/SecurityController.php';
+
+require_once 'src/controllers/AvailableController.php';
+
 require_once 'src/repository/ProjectRepository.php';
 require_once 'src/models/Project.php';
 require_once 'Database.php';
 
 $routing = [
     'dashboard' => [
-        'controller' => 'DashboardController',
+        'controller' => new DashboardController(),
         'action' => 'dashboard',
         'access' => ['user', 'admin']
     ],
     'login' => [
-        'controller' => 'SecurityController',
+        'controller' => new SecurityController(),
         'action' => 'login',
         'access' => []
     ],
     'project' => [
-        'controller' => 'DashboardController',
+        'controller' => new DashboardController(),
         'action' => 'project',
         'access' => ["user"]
     ],
     'search' => [
-        'controller' => 'DashboardController',
+        'controller' => new DashboardController(),
         'action' => 'search',
         'access' => ["user"]
+    ],
+    'available' => [
+        'controller' => new AvailableController(),
+        'action' => 'available',
+        'access' => []
     ]
     ];
 
@@ -42,10 +50,10 @@ switch($action){
     case "project":
     case "search":
     case "login":
+    case "available":
         //TODO check if user is authenticated and has access to system
-        $controllerName = $routing[$action]['controller'];
         $actionName = $routing[$action]['action'];
-        $controller = new $controllerName;
+        $controller = $routing[$action]['controller'];
         $controller->$actionName();
         break;
     default:
