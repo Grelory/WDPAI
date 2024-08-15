@@ -2,47 +2,47 @@
 
 class Ticket {
 
-    public $ticket_id;
-	public $user_id;
-	public $provider_id;
-	public $location_id;
-	public $transport_type_id;
-	public $ticket_type_id;
-	public $expiry_time;
-	public $purchase_time;
+    public $ticketId;
+	public $userName;
+	public $providerName;
+	public $locationName;
+	public $transportTypeName;
+	public $ticketTypeName;
+	public $expiryTime;
+	public $purchaseTime;
 
     public function __construct() {
     }
 
     public function getTicketId() : string {
-        return $this->ticket_id;
+        return $this->ticketId;
     }
 
-    public function getUserId() : string {
-        return $this->user_id;
+    public function getUserName() : string {
+        return $this->userName;
     }
 
-    public function getProviderId() : string {
-        return $this->provider_id;
+    public function getProviderName() : string {
+        return $this->providerName;
     }
 
-    public function getLocationId() : string {
-        return $this->location_id;
+    public function getLocationName() : string {
+        return $this->locationName;
     }
 
-    public function getTransportTypeId() : string {
-        return $this->transport_type_id;
+    public function getTransportTypeName() : string {
+        return $this->transportTypeName;
     }
 
-    public function getTicketTypeId() : string {
-        return $this->ticket_type_id;
+    public function getTicketTypeName() : string {
+        return $this->ticketTypeName;
     }
 
     public function getExpiryTime() : string {
-        return $this->expiry_time;
+        return $this->expiryTime;
     }
 
     public function getPurchaseTime() : string {
-        return $this->purchase_time;
+        return $this->purchaseTime;
     }
 }
