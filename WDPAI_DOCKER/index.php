@@ -3,6 +3,7 @@
 require_once 'src/controllers/AppController.php';
 require_once 'src/controllers/DashboardController.php';
 require_once 'src/controllers/auth/LoginController.php';
+require_once 'src/controllers/auth/RegistrationController.php';
 
 require_once 'src/controllers/AvailableController.php';
 
@@ -14,7 +15,7 @@ $controller = new AppController();
 $loginController = new LoginController();
 $dashboardController = new DashboardController();
 $availableController = new AvailableController();
-$registrationController = new AvailableController();
+$registrationController = new RegistrationController();
 
 $routing = [
     'user/available' => [
