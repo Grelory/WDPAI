@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/forms.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
+    
+    <script src="/public/scripts/shared/logo.js" defer></script>
+
+    
+    <title>Login</title>
+</head>
+
+<body>
+    <div id="content">
+        <form class="login-form flex-column-center-center" action="/auth/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter email address" required>
+    
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" placeholder="Enter password" required>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
