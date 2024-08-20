@@ -10,53 +10,46 @@ require_once 'src/repository/ProjectRepository.php';
 require_once 'src/models/Project.php';
 require_once 'Database.php';
 
+$controller = new AppController();
+$loginController = new LoginController();
+$dashboardController = new DashboardController();
+$availableController = new AvailableController();
+$registrationController = new AvailableController();
+
 $routing = [
-    'dashboard' => [
-        'controller' => new DashboardController(),
-        'action' => 'dashboard',
-        'access' => ['user', 'admin']
-    ],
-    'login' => [
-        'controller' => new LoginController(),
-        'action' => 'login',
+    'user/available' => [
+        'action' => array($availableController, 'available'),
+        'params' => [],
         'access' => []
     ],
-    'project' => [
-        'controller' => new DashboardController(),
-        'action' => 'project',
-        'access' => ["user"]
+
+    'auth/login' => [
+        'action' => array($loginController, 'login'),
+        'params' => [],
+        'access' => []
     ],
-    'search' => [
-        'controller' => new DashboardController(),
-        'action' => 'search',
-        'access' => ["user"]
-    ],
-    'available' => [
-        'controller' => new AvailableController(),
-        'action' => 'available',
+    'auth/registration' => [
+        'action' => array($registrationController, 'registration'),
+        'params' => [],
         'access' => []
     ]
-    ];
+];
 
-$controller = new AppController();
+$uri = $_SERVER['REQUEST_URI'];
+$path = trim(parse_url($uri, PHP_URL_PATH), '/');
 
-$path = trim($_SERVER['REQUEST_URI'], '/');
-$path = parse_url( $path, PHP_URL_PATH);
-$action = explode("/", $path)[0];
-$action = $action == null ? 'login': $action;
+$action = $routing[$path]['action'];
+$params = $routing[$path]['params'];
+// TODO check the access
 
-switch($action){
-    case "dashboard":
-    case "project":
-    case "search":
-    case "login":
-    case "available":
-        //TODO check if user is authenticated and has access to system
-        $actionName = $routing[$action]['action'];
-        $controller = $routing[$action]['controller'];
-        $controller->$actionName();
-        break;
-    default:
-        $controller->render($action);
-        break;
+
+if ($action == null) {
+    // TODO change default path
+    $action = array($controller, 'render');
+    $params = ['auth/login'];
 }
+
+$action = $action == null ? array($controller, 'render') : $action;
+
+call_user_func_array($action, $params);
+
