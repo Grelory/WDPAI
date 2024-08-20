@@ -5,10 +5,10 @@ require_once __DIR__ . '/../../models/auth/User.php';
 
 class RegistrationRepository extends Repository {
 
-    public function getUsers() {
-        $stmt = $this->database->connect()->prepare('SELECT * FROM users');
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+    public function saveUser($userName, $email, $password) {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users (user_name, user_email, user_password)
+            VALUES (?,?,?)');
+        $stmt->execute([$userName, $email, $password]);
     }
 }

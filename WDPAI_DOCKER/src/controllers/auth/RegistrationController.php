@@ -8,13 +8,18 @@ class RegistrationController extends AppController {
     public function __construct()
     {
         parent::__construct();
-        $this->ticketsRepository = new RegistrationRepository();
+        $this->registrationRepository = new RegistrationRepository();
     }
 
     public function registration() {
         if ($this->isGet()) {
             return $this->render('auth/registration');
         }
-        
+
+        $this->registrationRepository->saveUser(
+            $_POST['userName'], 
+            $_POST['email'], 
+            $_POST['password']
+        );    
     }
 }
