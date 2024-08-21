@@ -40,17 +40,17 @@ $uri = $_SERVER['REQUEST_URI'];
 $path = trim(parse_url($uri, PHP_URL_PATH), '/');
 
 $action = $routing[$path]['action'];
-$params = $routing[$path]['params'];
+$args = $routing[$path]['params'];
 // TODO check the access
 
 
 if ($action == null) {
     // TODO change default path
     $action = array($controller, 'render');
-    $params = ['auth/login'];
+    $args = ['auth/login'];
 }
 
 $action = $action == null ? array($controller, 'render') : $action;
 
-call_user_func_array($action, $params);
+call_user_func_array($action, $args);
 
