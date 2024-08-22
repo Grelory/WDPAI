@@ -18,6 +18,11 @@ $availableController = new AvailableController();
 $registrationController = new RegistrationController();
 
 $routing = [
+    'user/dashboard' => [
+        'action' => array($availableController, 'available'),
+        'params' => [],
+        'access' => []
+    ],
     'user/available' => [
         'action' => array($availableController, 'available'),
         'params' => [],

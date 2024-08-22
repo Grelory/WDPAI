@@ -1,19 +1,23 @@
 <?php
 
 class AppController {
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
-    protected function isGet(): bool
-    {
+    protected function isGet(): bool {
         return $this->request === 'GET';
     }
 
-    protected function isPost(): bool
-    {
+    protected function isPost(): bool {
         return $this->request === 'POST';
+    }
+
+    protected function redirect($path) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("location: {$url}{$path}");
+        die();
     }
     
     public function render(string $template = null, array $variables = [])

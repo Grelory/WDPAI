@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS providers;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS transport_types;
 DROP TABLE IF EXISTS ticket_types;
+DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TYPE IF EXISTS userrole;
 
@@ -11,14 +12,14 @@ CREATE TYPE userrole AS ENUM ('USER', 'ADMIN');
 CREATE TABLE users (
 	user_id SERIAL PRIMARY KEY,
 	user_name TEXT NOT NULL,
-	user_email TEXT NOT NULL,
+	user_email TEXT NOT NULL UNIQUE,
 	user_password TEXT NOT NULL,
 	user_role userrole NOT NULL DEFAULT 'USER'
 );
 
 CREATE TABLE user_sessions (
 	user_id INT PRIMARY KEY,
-	session_id TEXT NOT NULL,
+	session_id UUID UNIQUE NOT NULL DEFAULT gen_random_uuid(),
 	CONSTRAINT user_sessions_fk_user_id 
 		FOREIGN KEY (user_id) 
 			REFERENCES users(user_id)
