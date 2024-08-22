@@ -1,5 +1,5 @@
 
-const homePath = '/public/views/user/'
+const homePath = '/user/'
 
 const icons = [
 
@@ -12,8 +12,7 @@ const icons = [
 ]
 
 function goto(destination) {
-    console.log('Requested GOTO: ' + destination)
-    window.location = homePath + destination + '.html'
+    window.location = homePath + destination
 }
 
 function navbarElements() {

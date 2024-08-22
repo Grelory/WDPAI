@@ -5,7 +5,7 @@ require_once 'src/controllers/DashboardController.php';
 require_once 'src/controllers/auth/LoginController.php';
 require_once 'src/controllers/auth/RegistrationController.php';
 
-require_once 'src/controllers/AvailableController.php';
+require_once 'src/controllers/user/UserViewController.php';
 
 require_once 'src/repository/ProjectRepository.php';
 require_once 'src/models/Project.php';
@@ -14,17 +14,37 @@ require_once 'Database.php';
 $controller = new AppController();
 $loginController = new LoginController();
 $dashboardController = new DashboardController();
-$availableController = new AvailableController();
+$userViewController = new UserViewController();
 $registrationController = new RegistrationController();
 
 $routing = [
-    'user/dashboard' => [
-        'action' => array($availableController, 'available'),
+    'user/available' => [
+        'action' => array($userViewController, 'available'),
         'params' => [],
         'access' => ['USER']
     ],
-    'user/available' => [
-        'action' => array($availableController, 'available'),
+    'user/buy' => [
+        'action' => array($userViewController, 'buy'),
+        'params' => [],
+        'access' => ['USER']
+    ],
+    'user/dashboard' => [
+        'action' => array($userViewController, 'dashboard'),
+        'params' => [],
+        'access' => ['USER']
+    ],
+    'user/expired' => [
+        'action' => array($userViewController, 'expired'),
+        'params' => [],
+        'access' => ['USER']
+    ],
+    'user/favourites' => [
+        'action' => array($userViewController, 'favourites'),
+        'params' => [],
+        'access' => ['USER']
+    ],
+    'user/logout' => [
+        'action' => array($userViewController, 'logout'),
         'params' => [],
         'access' => ['USER']
     ],
