@@ -21,12 +21,12 @@ $routing = [
     'user/dashboard' => [
         'action' => array($availableController, 'available'),
         'params' => [],
-        'access' => []
+        'access' => ['USER']
     ],
     'user/available' => [
         'action' => array($availableController, 'available'),
         'params' => [],
-        'access' => []
+        'access' => ['USER']
     ],
 
     'auth/login' => [
@@ -46,16 +46,35 @@ $path = trim(parse_url($uri, PHP_URL_PATH), '/');
 
 $action = $routing[$path]['action'];
 $args = $routing[$path]['params'];
-// TODO check the access
+$access = $routing[$path]['access'];
 
+$user = $loginController->searchUser();
 
 if ($action == null) {
-    // TODO change default path
-    $action = array($controller, 'render');
-    $args = ['auth/login'];
+    // TODO implement screen
+    echo "404 Not found";
+    die();
 }
 
-$action = $action == null ? array($controller, 'render') : $action;
+if ($user != null && in_array($path, array('auth/login', 'auth/registration'))) {
+    $loginController->redirectByRole($user->getUserRole());
+    die();
+}
 
-call_user_func_array($action, $args);
+if (empty($access)) {
+    call_user_func_array($action, $args);
+    die();
+}
+
+if ($user == null) {
+    $loginController->unauthorized();
+    die();
+}
+
+if (in_array($user->getUserRole(), $access)) {
+    call_user_func_array($action, $args);
+    die();
+}
+
+$loginController->forbidden();
 
