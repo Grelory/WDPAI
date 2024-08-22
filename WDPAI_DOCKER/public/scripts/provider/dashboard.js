@@ -1,1 +1,0 @@
-document.querySelector('body div').innerHTML = '<p>Provider dashboard has not been implemented yet</p>'
