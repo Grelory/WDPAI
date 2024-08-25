@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS providers;
 DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS transport_types;
 DROP TABLE IF EXISTS ticket_types;
+DROP TABLE IF EXISTS user_sessions_archive;
 DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TYPE IF EXISTS userrole;
@@ -20,10 +21,33 @@ CREATE TABLE users (
 CREATE TABLE user_sessions (
 	user_id INT PRIMARY KEY,
 	session_id UUID UNIQUE NOT NULL DEFAULT gen_random_uuid(),
+	create_time TIMESTAMP NOT NULL DEFAULT now(),
 	CONSTRAINT user_sessions_fk_user_id 
 		FOREIGN KEY (user_id) 
 			REFERENCES users(user_id)
 );
+
+CREATE TABLE user_sessions_archive (
+    user_id INT,
+    session_id UUID,
+	logged_in_time TIMESTAMP NOT NULL,
+    logged_out_time TIMESTAMP NOT NULL
+);
+
+CREATE OR REPLACE FUNCTION archive_user_session() 
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO user_sessions_archive (user_id, session_id, logged_in_time, logged_out_time)
+    VALUES (OLD.user_id, OLD.session_id, OLD.create_time, now());
+
+	RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER user_sessions_archive_trigger_on_delete
+AFTER DELETE ON user_sessions
+FOR EACH ROW
+EXECUTE FUNCTION archive_user_session();
 
 CREATE TABLE providers (
 	provider_id SERIAL PRIMARY KEY,
