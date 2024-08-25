@@ -32,6 +32,13 @@ class LoginController extends AppController {
         $this->unauthorized();
     }
 
+    public function logout() {
+        $this->authorizedUsersRepository->remove($_COOKIE['sessionId']);
+        setcookie('sessionId', '', time()-1, '/');
+
+        $this->render('auth/logout');
+    }
+
     public function forbidden() {
         echo "403 forbidden"; // todo create a view
     }

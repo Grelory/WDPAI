@@ -41,6 +41,17 @@ class AuthorizedUsersRepository extends Repository {
         return $this->searchById($user->getUserId());
     }
 
+    public function remove($cookie) {
+        if ($cookie == null) {
+            return;
+        }
+
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM user_sessions WHERE session_id = ?
+        ');
+        $stmt->execute([$cookie]);
+    }
+
     private function searchUser($email, $password) {
         $stmt = $this->database->connect()->prepare('
             SELECT user_id as "userId",

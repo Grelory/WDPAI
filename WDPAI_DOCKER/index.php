@@ -54,6 +54,11 @@ $routing = [
         'params' => [],
         'access' => []
     ],
+    'auth/logout' => [
+        'action' => array($loginController, 'logout'),
+        'params' => [],
+        'access' => []
+    ],
     'auth/registration' => [
         'action' => array($registrationController, 'registration'),
         'params' => [],
