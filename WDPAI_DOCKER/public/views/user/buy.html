@@ -14,6 +14,8 @@
     <script src="/public/scripts/user/navigation-bar.js" defer></script>
     <script src="/public/scripts/shared/logo.js" defer></script>
 
+    <script src="/public/scripts/user/tickets-to-buy.js" defer></script>
+
     <title>Buy</title>
 </head>
 
@@ -24,25 +26,24 @@
     <div id="content">
         <form class="ticket-form flex-column-center-center" action="/submit-ticket" method="POST">
             <label for="provider">Provider:</label>
-            <input type="text" id="provider" name="provider" placeholder="Enter provider name" required>
-    
+            <select id="provider" name="provider" required>
+                <option value="">Select</option>
+            </select>
+
+
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" placeholder="Enter location" required>
+            <select id="location" name="location" required>
+                <option value="">Select</option>
+            </select>
     
             <label for="transport-type">Transport Type:</label>
             <select id="transport-type" name="transport-type" required>
-                <option value="bus">Bus</option>
-                <option value="subway">Subway</option>
-                <option value="train">Train</option>
-                <option value="tram">Tram</option>
+                <option value="">Select</option>
             </select>
     
             <label for="ticket-type">Ticket Type:</label>
             <select id="ticket-type" name="ticket-type" required>
-                <option value="20-mins">20 mins</option>
-                <option value="1-hour">1 hour</option>
-                <option value="day-pass">Day Pass</option>
-                <option value="week-pass">Week Pass</option>
+                <option value="">Select</option>
             </select>
     
             <button type="submit">Buy Ticket</button>

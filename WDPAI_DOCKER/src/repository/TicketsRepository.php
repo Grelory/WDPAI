@@ -2,6 +2,7 @@
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Ticket.php';
+require_once __DIR__ . '/../models/TicketToBuy.php';
 
 class TicketsRepository extends Repository {
 
@@ -50,5 +51,24 @@ class TicketsRepository extends Repository {
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Ticket');
+    }
+
+    public function getTicketsToBuy() {
+        $stmt = $this->database->connect()->prepare('
+            SELECT 
+	            t.ticket_to_buy_id as "ticketToBuyId",
+	            p.provider_name as "providerName",
+	            l.location_name as "locationName",
+	            tr.transport_type_name as "transportTypeName",
+	            ti.ticket_type_name as "ticketTypeName"
+	        FROM tickets_to_buy t
+	            INNER JOIN providers p ON p.provider_id = t.provider_id
+	            INNER JOIN locations l ON l.location_id = t.location_id
+	            INNER JOIN transport_types tr ON tr.transport_type_id = t.transport_type_id
+	            INNER JOIN ticket_types ti ON ti.ticket_type_id = t.ticket_type_id
+        ');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'TicketToBuy');
     }
 }

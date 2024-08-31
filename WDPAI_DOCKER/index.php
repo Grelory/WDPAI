@@ -6,6 +6,7 @@ require_once 'src/controllers/auth/LoginController.php';
 require_once 'src/controllers/auth/RegistrationController.php';
 
 require_once 'src/controllers/user/UserViewController.php';
+require_once 'src/controllers/resource/TicketsToBuyResource.php';
 
 require_once 'src/repository/ProjectRepository.php';
 require_once 'src/models/Project.php';
@@ -16,6 +17,7 @@ $loginController = new LoginController();
 $dashboardController = new DashboardController();
 $userViewController = new UserViewController();
 $registrationController = new RegistrationController();
+$ticketsToBuyResource = new TicketsToBuyResource();
 
 $routing = [
     'user/available' => [
@@ -61,6 +63,12 @@ $routing = [
     ],
     'auth/registration' => [
         'action' => array($registrationController, 'registration'),
+        'params' => [],
+        'access' => []
+    ],
+
+    'resources/tickets-to-buy' => [
+        'action' => array($ticketsToBuyResource, 'ticketsToBuy'),
         'params' => [],
         'access' => []
     ]
