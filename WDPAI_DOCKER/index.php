@@ -27,7 +27,7 @@ $routing = [
     ],
     'user/buy' => [
         'action' => array($userViewController, 'buy'),
-        'params' => [],
+        'params' => ['authorizedUser'],
         'access' => ['USER']
     ],
     'user/dashboard' => [

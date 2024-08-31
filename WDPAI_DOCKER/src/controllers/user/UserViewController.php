@@ -17,10 +17,22 @@ class UserViewController extends AppController {
         ]);
     }
 
-    public function buy() {
-        return $this->render('user/buy', [
-            "items" => $this->ticketsRepository->getTickets()
-        ]);
+    public function buy($user) {
+        if ($this->isGet()) {
+            return $this->render('user/buy', [
+                "items" => $this->ticketsRepository->getTickets()
+            ]);
+        }
+        
+        $this->ticketsRepository->saveTicket(
+            $user->getUserId(),
+            $_POST['provider'], 
+            $_POST['location'], 
+            $_POST['transport-type'], 
+            $_POST['ticket-type']
+        );  
+
+        $this->redirect('/user/available');
     }
 
     public function dashboard() {
