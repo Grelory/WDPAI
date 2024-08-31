@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS tickets_to_buy;
+DROP TABLE IF EXISTS intervals;
+
 DROP TABLE IF EXISTS tickets;
 DROP TABLE IF EXISTS providers;
 DROP TABLE IF EXISTS locations;
@@ -66,7 +69,8 @@ CREATE TABLE transport_types (
 
 CREATE TABLE ticket_types (
 	ticket_type_id SERIAL PRIMARY KEY,
-	ticket_type_name TEXT NOT NULL
+	ticket_type_name TEXT NOT NULL,
+	ticket_type_expiry_interval INTERVAL NOT NULL
 );
 
 CREATE TABLE tickets (
@@ -96,6 +100,32 @@ CREATE TABLE tickets (
 	
 );
 
+CREATE TABLE intervals (
+	interval_id SERIAL PRIMARY KEY,
+	interval_name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE tickets_to_buy (
+	ticket_to_buy_id SERIAL PRIMARY KEY,
+	provider_id INT NOT NULL,
+	location_id INT NOT NULL,
+	transport_type_id INT NOT NULL,
+	ticket_type_id INT NOT NULL,
+	CONSTRAINT tickets_to_buy_fk_provider_id 
+		FOREIGN KEY (provider_id) 
+			REFERENCES providers(provider_id),
+	CONSTRAINT tickets_to_buy_fk_location_id 
+		FOREIGN KEY (location_id) 
+			REFERENCES locations(location_id),
+	CONSTRAINT tickets_to_buy_fk_transport_id 
+		FOREIGN KEY (transport_type_id) 
+			REFERENCES transport_types(transport_type_id),
+	CONSTRAINT tickets_to_buy_fk_ticket_type_id 
+		FOREIGN KEY (ticket_type_id) 
+			REFERENCES ticket_types(ticket_type_id),
+	UNIQUE(provider_id, location_id, transport_type_id, ticket_type_id)
+);
+
 INSERT INTO users (user_name, user_password, user_email)
 VALUES ('aaaaa', 'aaaaa', 'aaaaa@example.com'),
 ('bbbbb', 'bbbbb', 'bbbbb@example.com'),
@@ -108,10 +138,46 @@ INSERT INTO locations (location_name)
 VALUES ('Cracow'), ('Warsaw'), ('Wroclaw');
 
 INSERT INTO transport_types (transport_type_name)
-VALUES ('Bus'), ('Tram'), ('Train');
+VALUES ('Bus'), ('Tram'), ('Train'), ('Subway');
 
-INSERT INTO ticket_types (ticket_type_name)
-VALUES ('20 Min'), ('60 Min'), ('Day Pass'), ('Week Pass');
+INSERT INTO ticket_types (ticket_type_name, ticket_type_expiry_interval)
+VALUES ('20 Min', '20 MINUTES'), ('1 HOUR', '1 HOUR'), ('Day Pass', '1 DAY'), ('Week Pass', '1 WEEK');
 
 INSERT INTO tickets (user_id, provider_id, location_id, transport_type_id, ticket_type_id) 
 VALUES (1, 1, 1, 1, 1), (2, 2, 2, 2, 2), (3, 3, 3, 3, 4);
+
+INSERT INTO intervals (interval_name)
+VALUES ('MINUTES'), ('HOURS'), ('DAYS'), ('WEEKS'), ('MONTHS'), ('YEARS');
+
+INSERT INTO tickets_to_buy (provider_id, location_id, transport_type_id, ticket_type_id)
+VALUES 
+(2, 1, 1, 1),
+(2, 1, 1, 2),
+(2, 1, 1, 3),
+(2, 1, 1, 4),
+
+(2, 1, 2, 1),
+(2, 1, 2, 2),
+(2, 1, 2, 3),
+(2, 1, 2, 4),
+
+(2, 1, 3, 3),
+(2, 1, 3, 4),
+
+(3, 2, 1, 1),
+(3, 2, 1, 2),
+(3, 2, 1, 3),
+(3, 2, 1, 4),
+
+(3, 1, 2, 1),
+(3, 1, 2, 2),
+(3, 1, 2, 3),
+(3, 1, 2, 4),
+
+(3, 1, 3, 3),
+(3, 1, 3, 4),
+
+(3, 1, 4, 1),
+(3, 1, 4, 2),
+(3, 1, 4, 3),
+(3, 1, 4, 4);
