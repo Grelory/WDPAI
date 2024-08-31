@@ -11,9 +11,9 @@ class UserViewController extends AppController {
         $this->ticketsRepository = new TicketsRepository();
     }
 
-    public function available() {
+    public function available($user) {
         return $this->render('user/available', [
-            "items" => $this->ticketsRepository->getTickets()
+            "items" => $this->ticketsRepository->getTicketsByUserId($user->getUserId())
         ]);
     }
 

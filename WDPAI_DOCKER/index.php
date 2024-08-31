@@ -20,7 +20,7 @@ $registrationController = new RegistrationController();
 $routing = [
     'user/available' => [
         'action' => array($userViewController, 'available'),
-        'params' => [],
+        'params' => ['authorizedUser'],
         'access' => ['USER']
     ],
     'user/buy' => [
@@ -70,35 +70,43 @@ $uri = $_SERVER['REQUEST_URI'];
 $path = trim(parse_url($uri, PHP_URL_PATH), '/');
 
 $action = $routing[$path]['action'];
-$args = $routing[$path]['params'];
+$params = $routing[$path]['params'];
 $access = $routing[$path]['access'];
 
 $user = $loginController->searchUser();
 
-if ($action == null) {
-    // TODO implement screen
-    echo "404 Not found";
-    die();
+function createContext($params, $user) {
+    $context = [];
+    switch(true) {
+        case in_array('authorizedUser', $params):
+            array_push($context, $user);
+            break;
+    }
+    return $context;
 }
 
-if ($user != null && in_array($path, array('auth/login', 'auth/registration'))) {
-    $loginController->redirectByRole($user->getUserRole());
-    die();
-}
-
-if (empty($access)) {
-    call_user_func_array($action, $args);
-    die();
-}
-
-if ($user == null) {
-    $loginController->unauthorized();
-    die();
-}
-
-if (in_array($user->getUserRole(), $access)) {
-    call_user_func_array($action, $args);
-    die();
+switch(true) {
+    case $path == null || $path = '':
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("location: {$url}/auth/login");
+        die();
+    case $action == null:
+        // TODO implement screen
+        echo "404 Not found";
+        die();
+    case $user != null && in_array($path, array('auth/login', 'auth/registration')):
+        $loginController->redirectByRole($user->getUserRole());
+        die();
+    case empty($access):
+        call_user_func_array($action, createContext($params, $user));
+        die();
+    case $user == null:
+        $loginController->unauthorized();
+        die();
+    case in_array($user->getUserRole(), $access):
+        call_user_func_array($action, createContext($params, $user));
+        die();
+                                            
 }
 
 $loginController->forbidden();
