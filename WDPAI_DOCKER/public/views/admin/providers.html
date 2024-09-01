@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
     
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
     <script src="/public/scripts/shared/logo.js" defer></script>
@@ -17,9 +19,22 @@
 </head>
 
 <body>
-    <div id="content">
-        <p>Providers</p>
-    </div>
+    <div id="content" class="flex-column-center-center">
+        <div id="add-content">
+            <form class="location-form" action="/admin/providers" method="POST">
+                <label for="provider">Transport Type:</label>
+                <input type="text" id="provider" name="provider" placeholder="Enter provider" required>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div id="display-content">
+            <?php foreach($items as $item): ?>
+                <div class="provider">
+                    <span><?= $item->getProviderId(); ?></span>
+                    <span><?= $item->getProviderName(); ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
 </body>
 
 </html>

@@ -4,6 +4,7 @@ require_once __DIR__ . '/../AppController.php';
 require_once __DIR__ . '/../../repository/TicketsRepository.php';
 require_once __DIR__ . '/../../repository/LocationsRepository.php';
 require_once __DIR__ . '/../../repository/TransportTypesRepository.php';
+require_once __DIR__ . '/../../repository/ProvidersRepository.php';
 
 class AdminViewController extends AppController { 
 
@@ -13,6 +14,7 @@ class AdminViewController extends AppController {
         $this->ticketsRepository = new TicketsRepository();
         $this->locationsRepository = new LocationsRepository();
         $this->transportTypesRepository = new TransportTypesRepository();
+        $this->providersRepository = new ProvidersRepository();
     }
 
     public function dashboard() {
@@ -24,7 +26,13 @@ class AdminViewController extends AppController {
     }
 
     public function providers() {
-        return $this->render('admin/providers');
+        if ($this->isGet()) {
+            return $this->render('admin/providers', [
+                "items" => $this->providersRepository->getProviders()
+            ]);
+        }
+        $this->providersRepository->saveProvider($_POST['provider']);
+        $this->redirect('/admin/providers');
     }
 
     public function locations() {
