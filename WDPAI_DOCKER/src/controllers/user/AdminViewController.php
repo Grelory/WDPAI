@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../AppController.php';
 require_once __DIR__ . '/../../repository/TicketsRepository.php';
 require_once __DIR__ . '/../../repository/LocationsRepository.php';
+require_once __DIR__ . '/../../repository/TransportTypesRepository.php';
 
 class AdminViewController extends AppController { 
 
@@ -11,6 +12,7 @@ class AdminViewController extends AppController {
         parent::__construct();
         $this->ticketsRepository = new TicketsRepository();
         $this->locationsRepository = new LocationsRepository();
+        $this->transportTypesRepository = new TransportTypesRepository();
     }
 
     public function dashboard() {
@@ -36,7 +38,13 @@ class AdminViewController extends AppController {
     }
 
     public function transport() {
-        return $this->render('admin/transport');
+        if ($this->isGet()) {
+            return $this->render('admin/transport', [
+                "items" => $this->transportTypesRepository->getTransportTypes()
+            ]);
+        }
+        $this->transportTypesRepository->saveTransportType($_POST['transport-type']);
+        $this->redirect('/admin/transport');
     }
 
     public function types() {
