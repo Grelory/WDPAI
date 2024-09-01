@@ -22,20 +22,16 @@
 <body>
     <div id="content">
         <div class="tickets">
-            <div class="ticket" id='ticket-3'>
-                <h3>Warsaw</h3>
-                <p>moBiLET</p>
-                <p>Subway</p>
-                <p>20 mins</p>
-                <p>2024-08-31 12:00:00</p>
-            </div>
-            <div class="ticket" id='ticket-4'>
-                <h3>Cracow</h3>
-                <p>moBiLET</p>
-                <p>Bus</p>
-                <p>Day Pass</p>
-                <p>2024-09-05 15:00:00</p>
-            </div>
+            <?php foreach($items as $item): ?>
+                <div class="ticket">
+                    <h3><?= $item->getLocationName(); ?></h3>
+                    <p><?= $item->getProviderName(); ?></p>
+                    <p><?= $item->getTransportTypeName(); ?></p>
+                    <p><?= $item->getTicketTypeName(); ?></p>
+                    <p><?= $item->getPurchaseTime(); ?></p>
+                    <p><?= $item->getExpiryTime(); ?></p>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>

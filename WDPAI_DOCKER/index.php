@@ -37,7 +37,7 @@ $routing = [
     ],
     'user/expired' => [
         'action' => array($userViewController, 'expired'),
-        'params' => [],
+        'params' => ['authorizedUser'],
         'access' => ['USER']
     ],
     'user/favourites' => [

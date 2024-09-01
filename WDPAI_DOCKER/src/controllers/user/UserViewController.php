@@ -13,7 +13,7 @@ class UserViewController extends AppController {
 
     public function available($user) {
         return $this->render('user/available', [
-            "items" => $this->ticketsRepository->getTicketsByUserId($user->getUserId())
+            "items" => $this->ticketsRepository->getAvailableTicketsByUserId($user->getUserId())
         ]);
     }
 
@@ -23,7 +23,7 @@ class UserViewController extends AppController {
                 "items" => $this->ticketsRepository->getTickets()
             ]);
         }
-        
+
         $this->ticketsRepository->saveTicket(
             $user->getUserId(),
             $_POST['provider'], 
@@ -41,9 +41,9 @@ class UserViewController extends AppController {
         ]);
     }
 
-    public function expired() {
+    public function expired($user) {
         return $this->render('user/expired', [
-            "items" => $this->ticketsRepository->getTickets()
+            "items" => $this->ticketsRepository->getExpiredTicketsByUserId($user->getUserId())
         ]);
     }
 
