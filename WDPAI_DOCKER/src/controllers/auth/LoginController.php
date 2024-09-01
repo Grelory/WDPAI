@@ -23,9 +23,8 @@ class LoginController extends AppController {
             $user = $this->authorizedUsersRepository->create($_POST['email'], $_POST['password']);
         }
 
-        setcookie('sessionId', $user->getSessionId(), 0, '/');
-
         if ($user != null) {
+            setcookie('sessionId', $user->getSessionId(), 0, '/');
             return $this->redirectByRole($user->getUserRole());
         }
 
