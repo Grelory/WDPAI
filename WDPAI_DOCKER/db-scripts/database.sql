@@ -126,10 +126,12 @@ CREATE TABLE tickets_to_buy (
 	UNIQUE(provider_id, location_id, transport_type_id, ticket_type_id)
 );
 
-INSERT INTO users (user_name, user_password, user_email)
-VALUES ('aaaaa', 'aaaaa', 'aaaaa@example.com'),
-('bbbbb', 'bbbbb', 'bbbbb@example.com'),
-('ccccc', 'ccccc', 'ccccc@example.com');
+INSERT INTO users (user_name, user_password, user_email, user_role)
+VALUES ('aaaaa', 'aaaaa', 'aaaaa@example.com', 'USER'),
+('bbbbb', 'bbbbb', 'bbbbb@example.com', 'USER'),
+('ccccc', 'ccccc', 'ccccc@example.com', 'USER'),
+('user', 'user', 'user@example.com', 'USER'),
+('admin', 'admin', 'admin@example.com', 'ADMIN');
 
 INSERT INTO providers (provider_name)
 VALUES ('moBiLET'), ('MPK'), ('MPAY');

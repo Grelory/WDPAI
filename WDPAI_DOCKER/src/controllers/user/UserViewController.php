@@ -52,10 +52,4 @@ class UserViewController extends AppController {
             "items" => $this->ticketsRepository->getTickets()
         ]);
     }
-
-    public function logout() {
-        return $this->render('user/logout', [
-            "items" => $this->ticketsRepository->getTickets()
-        ]);
-    }
 }

@@ -6,6 +6,7 @@ require_once 'src/controllers/auth/LoginController.php';
 require_once 'src/controllers/auth/RegistrationController.php';
 
 require_once 'src/controllers/user/UserViewController.php';
+require_once 'src/controllers/user/AdminViewController.php';
 require_once 'src/controllers/resource/TicketsToBuyResource.php';
 
 require_once 'src/repository/ProjectRepository.php';
@@ -16,6 +17,7 @@ $controller = new AppController();
 $loginController = new LoginController();
 $dashboardController = new DashboardController();
 $userViewController = new UserViewController();
+$adminViewController = new AdminViewController();
 $registrationController = new RegistrationController();
 $ticketsToBuyResource = new TicketsToBuyResource();
 
@@ -49,6 +51,37 @@ $routing = [
         'action' => array($userViewController, 'logout'),
         'params' => [],
         'access' => ['USER']
+    ],
+
+    'admin/dashboard' => [
+        'action' => array($adminViewController, 'dashboard'),
+        'params' => [],
+        'access' => ['ADMIN']
+    ],
+    'admin/tickets' => [
+        'action' => array($adminViewController, 'tickets'),
+        'params' => [],
+        'access' => ['ADMIN']
+    ],
+    'admin/providers' => [
+        'action' => array($adminViewController, 'providers'),
+        'params' => [],
+        'access' => ['ADMIN']
+    ],
+    'admin/locations' => [
+        'action' => array($adminViewController, 'locations'),
+        'params' => [],
+        'access' => ['ADMIN']
+    ],
+    'admin/transport' => [
+        'action' => array($adminViewController, 'transport'),
+        'params' => [],
+        'access' => ['ADMIN']
+    ],
+    'admin/types' => [
+        'action' => array($adminViewController, 'types'),
+        'params' => [],
+        'access' => ['ADMIN']
     ],
 
     'auth/login' => [

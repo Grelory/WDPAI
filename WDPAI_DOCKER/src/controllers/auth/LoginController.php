@@ -56,6 +56,9 @@ class LoginController extends AppController {
             case 'USER':
                 $this->redirect('/user/dashboard');
                 return;
+            case 'ADMIN':
+                $this->redirect('/admin/dashboard');
+                return;
         }
     }
 }
