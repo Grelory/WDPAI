@@ -1,0 +1,11 @@
+div#add-content {
+    background-color: mediumorchid;
+}
+
+div#add-content form input {
+    background-color: navajowhite;
+}
+
+div#display-content {
+    background-color: mediumturquoise;
+}

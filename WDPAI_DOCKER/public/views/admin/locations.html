@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
     
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
     <script src="/public/scripts/shared/logo.js" defer></script>
@@ -17,9 +19,22 @@
 </head>
 
 <body>
-    <div id="content">
-        <p>Locations</p>
-    </div>
+    <div id="content" class="flex-column-center-center">
+        <div id="add-content">
+            <form class="location-form" action="/admin/locations" method="POST">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter location" required>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div id="display-content">
+            <?php foreach($items as $item): ?>
+                <div class="location">
+                    <span><?= $item->getLocationId(); ?></span>
+                    <span><?= $item->getLocationName(); ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
 </body>
 
 </html>

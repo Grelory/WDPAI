@@ -1,5 +1,6 @@
 .flex-row-center-center {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -8,6 +9,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.flex-column-start-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
     gap: 1em;
 }
