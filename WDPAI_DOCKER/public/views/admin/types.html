@@ -8,8 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
+
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
     <script src="/public/scripts/shared/logo.js" defer></script>
 
@@ -17,8 +19,29 @@
 </head>
 
 <body>
-    <div id="content">
-        <p>Types</p>
+    <div id="content" class="flex-column-center-center">
+        <div id="add-content">
+            <form class="location-form" action="/admin/types" method="POST">
+                <label for="ticket-type">Transport Type:</label>
+                <input type="text" id="ticket-type" name="ticket-type" placeholder="Enter transport type" required>
+                <input type="number" id="interval-number" name="interval-number" placeholder="Enter interval" required>
+                <select id="interval-name" name="interval-name" required>
+                    <?php foreach($intervals as $interval): ?>
+                        <option value="<?= $interval->getIntervalName(); ?>"><?= $interval->getIntervalName(); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div id="display-content">
+            <?php foreach($types as $type): ?>
+                <div class="ticket-type">
+                    <span><?= $type->getTicketTypeId(); ?></span>
+                    <span><?= $type->getTicketTypeName(); ?></span>
+                    <span><?= $type->getTicketTypeExpiryInterval(); ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </body>
 

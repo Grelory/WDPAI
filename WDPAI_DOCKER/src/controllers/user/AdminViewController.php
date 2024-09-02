@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../repository/TicketsRepository.php';
 require_once __DIR__ . '/../../repository/LocationsRepository.php';
 require_once __DIR__ . '/../../repository/TransportTypesRepository.php';
 require_once __DIR__ . '/../../repository/ProvidersRepository.php';
+require_once __DIR__ . '/../../repository/TicketTypesRepository.php';
 
 class AdminViewController extends AppController { 
 
@@ -15,6 +16,7 @@ class AdminViewController extends AppController {
         $this->locationsRepository = new LocationsRepository();
         $this->transportTypesRepository = new TransportTypesRepository();
         $this->providersRepository = new ProvidersRepository();
+        $this->ticketTypesRepository = new TicketTypesRepository();
     }
 
     public function dashboard() {
@@ -22,7 +24,18 @@ class AdminViewController extends AppController {
     }
 
     public function tickets() {
-        return $this->render('admin/tickets');
+        if ($this->isGet()) {
+            return $this->render('admin/tickets', [
+                "items" => $this->ticketsRepository->getTicketsToBuy()
+            ]);
+        }
+        $this->ticketsRepository->saveUnmatchedTicketToBuy(
+            $_POST['provider'], 
+            $_POST['location'], 
+            $_POST['transport-type'], 
+            $_POST['ticket-type']
+        );
+        $this->redirect('/admin/tickets');
     }
 
     public function providers() {
@@ -56,6 +69,14 @@ class AdminViewController extends AppController {
     }
 
     public function types() {
-        return $this->render('admin/types');
+        if ($this->isGet()) {
+            return $this->render('admin/types', [
+                "intervals" => $this->ticketTypesRepository->getIntervals(),
+                "types" => $this->ticketTypesRepository->getTicketTypes()
+            ]);
+        }
+        $interval = $_POST['interval-number'] . ' ' . $_POST['interval-name'];
+        $this->ticketTypesRepository->saveTicketType($_POST['ticket-type'], $interval);
+        $this->redirect('/admin/types');
     }
 }

@@ -118,4 +118,50 @@ class TicketsRepository extends Repository {
         ');
         $stmt->execute([$userId, $provider, $location, $transport, $type]);
     }
+
+    public function getUnmatchedTicketsToBuy() {
+        $stmt = $this->database->connect()->prepare('
+            SELECT 
+                p.provider_name AS "providerName",
+                l.location_name AS "locationName",
+                tr.transport_type_name AS "transportTypeName",
+                ti.ticket_type_name AS "ticketTypeName"
+            FROM 
+                providers p
+                CROSS JOIN locations l
+                CROSS JOIN transport_types tr
+                CROSS JOIN ticket_types ti
+            LEFT JOIN 
+                tickets_to_buy t
+                ON t.provider_id = p.provider_id
+                AND t.location_id = l.location_id
+                AND t.transport_type_id = tr.transport_type_id
+                AND t.ticket_type_id = ti.ticket_type_id
+            WHERE 
+                t.ticket_to_buy_id IS NULL;
+        ');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'TicketToBuy');
+    }
+
+    public function saveUnmatchedTicketToBuy($provider, $location, $transport, $type) {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO tickets_to_buy (provider_id, location_id, transport_type_id, ticket_type_id)
+            SELECT
+                p.provider_id,
+                l.location_id,
+                tr.transport_type_id,
+                ti.ticket_type_id
+            FROM providers p
+                CROSS JOIN locations l
+                CROSS JOIN transport_types tr
+                CROSS JOIN ticket_types ti
+            WHERE p.provider_name = ? 
+                and l.location_name = ?
+                and tr.transport_type_name = ?
+                and ti.ticket_type_name = ?
+        ');
+        $stmt->execute([$provider, $location, $transport, $type]);
+    }
 }

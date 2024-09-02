@@ -7,7 +7,7 @@ require_once 'src/controllers/auth/RegistrationController.php';
 
 require_once 'src/controllers/user/UserViewController.php';
 require_once 'src/controllers/user/AdminViewController.php';
-require_once 'src/controllers/resource/TicketsToBuyResource.php';
+require_once 'src/controllers/resource/TicketsResource.php';
 
 require_once 'src/repository/ProjectRepository.php';
 require_once 'src/models/Project.php';
@@ -19,7 +19,7 @@ $dashboardController = new DashboardController();
 $userViewController = new UserViewController();
 $adminViewController = new AdminViewController();
 $registrationController = new RegistrationController();
-$ticketsToBuyResource = new TicketsToBuyResource();
+$ticketsResource = new TicketsResource();
 
 $routing = [
     'user/available' => [
@@ -100,8 +100,13 @@ $routing = [
         'access' => []
     ],
 
-    'resources/tickets-to-buy' => [
-        'action' => array($ticketsToBuyResource, 'ticketsToBuy'),
+    'resources/tickets/to-buy' => [
+        'action' => array($ticketsResource, 'ticketsToBuy'),
+        'params' => [],
+        'access' => []
+    ],
+    'resources/tickets/unmatched-to-buy' => [
+        'action' => array($ticketsResource, 'unmatchedTicketsToBuy'),
         'params' => [],
         'access' => []
     ]

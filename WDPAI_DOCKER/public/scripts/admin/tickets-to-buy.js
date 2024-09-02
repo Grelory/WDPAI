@@ -81,7 +81,7 @@ document.querySelector('select#transport-type').addEventListener('change', () =>
 });
 
 fetch(
-    window.location.origin + '/resources/tickets/to-buy',
+    window.location.origin + '/resources/tickets/unmatched-to-buy',
     {
         'method': 'GET',
         'credentials': 'include',
