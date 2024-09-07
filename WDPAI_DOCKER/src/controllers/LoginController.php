@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../AppController.php';
-require_once __DIR__ . '/../../models/auth/AuthorizedUser.php';
-require_once __DIR__ . '/../../repository/auth/AuthorizedUsersRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../models/AuthorizedUser.php';
+require_once __DIR__ . '/../repository/AuthorizedUsersRepository.php';
 
 class LoginController extends AppController { 
 

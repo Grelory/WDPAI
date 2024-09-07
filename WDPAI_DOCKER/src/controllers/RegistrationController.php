@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../AppController.php';
-require_once __DIR__ . '/../../repository/auth/RegistrationRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../repository/RegistrationRepository.php';
 
 class RegistrationController extends AppController { 
 

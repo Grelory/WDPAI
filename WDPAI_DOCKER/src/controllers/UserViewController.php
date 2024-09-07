@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../AppController.php';
-require_once __DIR__ . '/../../repository/TicketsRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../repository/TicketsRepository.php';
 
 class UserViewController extends AppController { 
 

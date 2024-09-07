@@ -1,11 +1,11 @@
 <?php
 
-require_once __DIR__ . '/../AppController.php';
-require_once __DIR__ . '/../../repository/TicketsRepository.php';
-require_once __DIR__ . '/../../repository/LocationsRepository.php';
-require_once __DIR__ . '/../../repository/TransportTypesRepository.php';
-require_once __DIR__ . '/../../repository/ProvidersRepository.php';
-require_once __DIR__ . '/../../repository/TicketTypesRepository.php';
+require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../repository/TicketsRepository.php';
+require_once __DIR__ . '/../repository/LocationsRepository.php';
+require_once __DIR__ . '/../repository/TransportTypesRepository.php';
+require_once __DIR__ . '/../repository/ProvidersRepository.php';
+require_once __DIR__ . '/../repository/TicketTypesRepository.php';
 
 class AdminViewController extends AppController { 
 

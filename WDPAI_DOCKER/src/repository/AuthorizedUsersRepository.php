@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../Repository.php';
-require_once __DIR__ . '/../../models/auth/User.php';
-require_once __DIR__ . '/../../models/auth/AuthorizedUser.php';
+require_once __DIR__ . '/Repository.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/AuthorizedUser.php';
 
 class AuthorizedUsersRepository extends Repository {
 

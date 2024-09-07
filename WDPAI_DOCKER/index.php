@@ -1,21 +1,17 @@
 <?php
 
 require_once 'src/controllers/AppController.php';
-require_once 'src/controllers/DashboardController.php';
-require_once 'src/controllers/auth/LoginController.php';
-require_once 'src/controllers/auth/RegistrationController.php';
+require_once 'src/controllers/LoginController.php';
+require_once 'src/controllers/RegistrationController.php';
 
-require_once 'src/controllers/user/UserViewController.php';
-require_once 'src/controllers/user/AdminViewController.php';
-require_once 'src/controllers/resource/TicketsResource.php';
+require_once 'src/controllers/UserViewController.php';
+require_once 'src/controllers/AdminViewController.php';
+require_once 'src/controllers/TicketsResource.php';
 
-require_once 'src/repository/ProjectRepository.php';
-require_once 'src/models/Project.php';
 require_once 'Database.php';
 
 $controller = new AppController();
 $loginController = new LoginController();
-$dashboardController = new DashboardController();
 $userViewController = new UserViewController();
 $adminViewController = new AdminViewController();
 $registrationController = new RegistrationController();
