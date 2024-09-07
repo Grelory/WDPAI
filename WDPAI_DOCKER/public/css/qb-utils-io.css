@@ -1,0 +1,35 @@
+.qb-input-1 {
+    background: transparent;
+    width: 20rem;
+}
+
+.qb-button-1 {
+    background-color: black;
+    width: 10rem;
+}
+
+.qb-input-1, .qb-button-1 {
+    border: 1px solid white;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+    color: white;
+}
+
+
+@media screen and (max-width: 500px) {
+    .qb-input-1 {
+        width: calc(100% - 50px);
+    }
+
+    .qb-button-1 {
+        width: 8rem;
+    }
+    
+    .qb-input-1, .qb-button-1 {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 1.6rem;
+    }
+}

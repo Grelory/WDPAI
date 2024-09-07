@@ -1,0 +1,20 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(200,8,188,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+#content {
+    position: fixed;
+    top: 20vh;
+    left: 0;
+    width: 100vw;
+    height: 80vh;
+}
+
+#content > * {
+    position: relative;
+    width: 100%;
+}
