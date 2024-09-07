@@ -3,5 +3,47 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.flex-csc {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.flex-ccs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.flex-css {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.flex-rcc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+
+.flex-gap-005 {
+    gap: 0.5rem;
+}
+.flex-gap-010 {
     gap: 1rem;
+}
+.flex-gap-020 {
+    gap: 2rem;
 }

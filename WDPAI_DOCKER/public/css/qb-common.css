@@ -9,8 +9,8 @@ body {
 #content {
     position: fixed;
     top: 20vh;
-    left: 0;
-    width: 100vw;
+    left: 5vw;
+    width: 90vw;
     height: 80vh;
 }
 

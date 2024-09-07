@@ -4,49 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
     
-    <script src="/public/scripts/user/navigation-bar.js" defer></script>
-    <script src="/public/scripts/shared/logo.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
 
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
+
+    <script src="/public/scripts/user/navigation-bar.js" defer></script>
     <script src="/public/scripts/user/tickets-to-buy.js" defer></script>
 
     <title>Buy</title>
 </head>
 
 <body>
-    <style>
-        
-    </style>
-    <div id="content">
-        <form class="ticket-form flex-column-center-center" action="/user/buy" method="POST">
-            <label for="provider">Provider:</label>
-            <select id="provider" name="provider" required>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="flex-ccc">
+        <form class="ticket-form flex-ccc flex-gap-005 cs-full" action="/user/buy" method="POST">
+            <label for="provider" class="qb-label-1">Provider:</label>
+            <select id="provider" class="qb-select-1" name="provider" required>
                 <option value="">Select</option>
             </select>
 
 
-            <label for="location">Location:</label>
-            <select id="location" name="location" required>
+            <label for="location" class="qb-label-1">Location:</label>
+            <select id="location" class="qb-select-1" name="location" required>
                 <option value="">Select</option>
             </select>
     
-            <label for="transport-type">Transport Type:</label>
-            <select id="transport-type" name="transport-type" required>
+            <label for="transport-type" class="qb-label-1">Transport Type:</label>
+            <select id="transport-type" class="qb-select-1" name="transport-type" required>
                 <option value="">Select</option>
             </select>
     
-            <label for="ticket-type">Ticket Type:</label>
-            <select id="ticket-type" name="ticket-type" required>
+            <label for="ticket-type" class="qb-label-1">Ticket Type:</label>
+            <select id="ticket-type" class="qb-select-1" name="ticket-type" required>
                 <option value="">Select</option>
             </select>
     
-            <button type="submit">Buy Ticket</button>
+            <button type="submit" class="qb-button-1 m-top-010">Buy Ticket</button>
         </form>
     </div>
 </body>

@@ -5,31 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/ticket.css">
-    
-    
+
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-tickets.css">
+        
     <script src="/public/scripts/user/navigation-bar.js" defer></script>
-    <script src="/public/scripts/shared/logo.js" defer></script>
 
     
     <title>Expired</title>
 </head>
 
 <body>
-    <div id="content">
-        <div class="tickets">
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="flex-rcc">
+        <div id="tickets" class="flex-rcc flex-wrap flex-gap-010 cs-full">
             <?php foreach($items as $item): ?>
-                <div class="ticket">
-                    <h3><?= $item->getLocationName(); ?></h3>
-                    <p><?= $item->getProviderName(); ?></p>
-                    <p><?= $item->getTransportTypeName(); ?></p>
-                    <p><?= $item->getTicketTypeName(); ?></p>
-                    <p><?= $item->getPurchaseTime(); ?></p>
-                    <p><?= $item->getExpiryTime(); ?></p>
+                <div class="ticket flex-ccs flex-gap-005">
+                    <div><?= $item->getLocationName(); ?></div>
+                    <div><?= $item->getProviderName(); ?></div>
+                    <div><?= $item->getTransportTypeName(); ?></div>
+                    <div><?= $item->getTicketTypeName(); ?></div>
+                    <div><?= $item->getPurchaseTime(); ?></div>
+                    <div><?= $item->getExpiryTime(); ?></div>
                 </div>
             <?php endforeach; ?>
         </div>

@@ -1,3 +1,21 @@
+.qb-label-1 {
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+}
+
+
+.qb-select-1 {
+    background: transparent;
+    width: 15rem;
+    border: 1px solid white;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+    color: white;
+}
+
 .qb-input-1 {
     background: transparent;
     width: 20rem;
@@ -33,6 +51,17 @@
     
     .qb-input-1, .qb-button-1 {
         padding: 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 1.6rem;
+    }
+
+    .qb-label-1, .qb-select-1 {
+        font-size: 0.8rem;
+    }
+
+    .qb-select-1 {
+        width: 10rem;
+        padding: 0.2rem;
         font-size: 0.8rem;
         border-radius: 1.6rem;
     }
