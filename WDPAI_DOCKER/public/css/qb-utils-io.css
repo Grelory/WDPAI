@@ -8,6 +8,10 @@
     width: 10rem;
 }
 
+.qb-button-1:hover {
+    background-color: gray;
+}
+
 .qb-input-1, .qb-button-1 {
     border: 1px solid white;
     padding: 1rem;

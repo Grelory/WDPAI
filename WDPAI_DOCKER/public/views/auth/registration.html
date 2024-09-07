@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/forms.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
     
-    <script src="/public/scripts/shared/logo.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+
     <script src="/public/scripts/shared/buttons.js" defer></script>
 
     
@@ -18,19 +17,15 @@
 </head>
 
 <body>
-    <div id="content">
-        <form class="registration-form flex-column-center-center" action="/auth/registration" method="POST">
-            <label for="userName">User Name:</label>
-            <input type="text" id="userName" name="userName" placeholder="Enter user name" required>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="registration-form flex-ccc">
+        <form class="registration-form flex-ccc" action="/auth/registration" method="POST">
+            <input type="text" id="userName" class="qb-input-1" name="userName" placeholder="Enter user name" required>
+            <input type="text" id="email" class="qb-input-1" name="email" placeholder="Enter email address" required>
+            <input type="text" id="password" class="qb-input-1" name="password" placeholder="Enter password" required>
     
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" placeholder="Enter email address" required>
-    
-            <label for="password">Password:</label>
-            <input type="text" id="password" name="password" placeholder="Enter password" required>
-    
-            <button type="submit">Submit</button>
-            <button class="go-to-login" type="button">Login</button>
+            <button type="submit" class="qb-button-1">Submit</button>
+            <button class="go-to-login qb-button-1" type="button">Login</button>
         </form>
     </div>
 </body>
