@@ -39,11 +39,17 @@ class LoginController extends AppController {
     }
 
     public function forbidden() {
-        echo "403 forbidden"; // todo create a view
+        return $this->render('message', [
+            "message" => "Sorry, you are not allowed to see this page.",
+            "path" => "main"
+        ]);
     }
 
     public function unauthorized() {
-        echo "401 unauthorized"; // todo create a view
+        return $this->render('message', [
+            "message" => "Sorry, you are not authorized to see this page.",
+            "path" => "login"
+        ]);
     }
 
     public function searchUser() {
@@ -55,10 +61,10 @@ class LoginController extends AppController {
         switch($role) {
             case 'USER':
                 $this->redirect('/user/dashboard');
-                return;
+                die();
             case 'ADMIN':
                 $this->redirect('/admin/dashboard');
-                return;
+                die();
         }
     }
 }

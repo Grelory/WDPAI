@@ -118,13 +118,15 @@ function createContext($params, $user) {
 }
 
 switch(true) {
-    case $path == null || $path = '':
+    case $path == null || $path == '':
         $url = "http://$_SERVER[HTTP_HOST]";
         header("location: {$url}/auth/login");
         die();
     case $action == null:
-        // TODO implement screen
-        echo "404 Not found";
+        $controller->render('message', [
+            "message" => "Sorry, the page is not found.",
+            "path" => "main"
+        ]);
         die();
     case $user != null && in_array($path, array('auth/login', 'auth/registration')):
         $loginController->redirectByRole($user->getUserRole());
