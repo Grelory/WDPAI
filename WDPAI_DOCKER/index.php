@@ -30,7 +30,7 @@ $routing = [
     ],
     'user/dashboard' => [
         'action' => array($userViewController, 'dashboard'),
-        'params' => [],
+        'params' => ['authorizedUser'],
         'access' => ['USER']
     ],
     'user/expired' => [
@@ -51,7 +51,7 @@ $routing = [
 
     'admin/dashboard' => [
         'action' => array($adminViewController, 'dashboard'),
-        'params' => [],
+        'params' => ['authorizedUser'],
         'access' => ['ADMIN']
     ],
     'admin/tickets' => [

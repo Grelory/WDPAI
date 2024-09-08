@@ -52,6 +52,19 @@ class AuthorizedUsersRepository extends Repository {
         $stmt->execute([$cookie]);
     }
 
+    public function searchUserNameBySession($sessionId) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT u.user_name
+            FROM users u
+            INNER JOIN user_sessions us ON us.user_id = u.user_id
+            WHERE us.session_id = ?
+        ');
+        $stmt->execute([$sessionId]);
+
+        $stmt->setFetchMode(PDO::FETCH_COLUMN, 0);
+        return $stmt->fetch();
+    }
+
     private function searchUser($email, $password) {
         $stmt = $this->database->connect()->prepare('
             SELECT user_id as "userId",

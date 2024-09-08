@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../repository/AuthorizedUsersRepository.php';
 require_once __DIR__ . '/../repository/TicketsRepository.php';
 require_once __DIR__ . '/../repository/LocationsRepository.php';
 require_once __DIR__ . '/../repository/TransportTypesRepository.php';
@@ -12,6 +13,7 @@ class AdminViewController extends AppController {
     public function __construct()
     {
         parent::__construct();
+        $this->authorizedUsersRepository = new AuthorizedUsersRepository();
         $this->ticketsRepository = new TicketsRepository();
         $this->locationsRepository = new LocationsRepository();
         $this->transportTypesRepository = new TransportTypesRepository();
@@ -19,8 +21,12 @@ class AdminViewController extends AppController {
         $this->ticketTypesRepository = new TicketTypesRepository();
     }
 
-    public function dashboard() {
-        return $this->render('admin/dashboard');
+    public function dashboard($user) {
+        $userName = $this->authorizedUsersRepository->searchUserNameBySession($user->getSessionId());
+        $userName = $userName == null ? 'Stranger' : $userName;
+        return $this->render('admin/dashboard', [
+            "name" => $userName
+        ]);
     }
 
     public function tickets() {

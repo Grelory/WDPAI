@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/AppController.php';
+require_once __DIR__ . '/../repository/AuthorizedUsersRepository.php';
 require_once __DIR__ . '/../repository/TicketsRepository.php';
 
 class UserViewController extends AppController { 
@@ -8,6 +9,7 @@ class UserViewController extends AppController {
     public function __construct()
     {
         parent::__construct();
+        $this->authorizedUsersRepository = new AuthorizedUsersRepository();
         $this->ticketsRepository = new TicketsRepository();
     }
 
@@ -35,9 +37,11 @@ class UserViewController extends AppController {
         $this->redirect('/user/available');
     }
 
-    public function dashboard() {
+    public function dashboard($user) {
+        $userName = $this->authorizedUsersRepository->searchUserNameBySession($user->getSessionId());
+        $userName = $userName == null ? 'Stranger' : $userName;
         return $this->render('user/dashboard', [
-            "items" => $this->ticketsRepository->getTickets()
+            "name" => $userName
         ]);
     }
 
