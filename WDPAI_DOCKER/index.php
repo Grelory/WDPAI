@@ -38,16 +38,6 @@ $routing = [
         'params' => ['authorizedUser'],
         'access' => ['USER']
     ],
-    'user/favourites' => [
-        'action' => array($userViewController, 'favourites'),
-        'params' => [],
-        'access' => ['USER']
-    ],
-    'user/logout' => [
-        'action' => array($userViewController, 'logout'),
-        'params' => [],
-        'access' => ['USER']
-    ],
 
     'admin/dashboard' => [
         'action' => array($adminViewController, 'dashboard'),

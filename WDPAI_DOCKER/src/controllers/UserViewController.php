@@ -50,10 +50,4 @@ class UserViewController extends AppController {
             "items" => $this->ticketsRepository->getExpiredTicketsByUserId($user->getUserId())
         ]);
     }
-
-    public function favourites() {
-        return $this->render('user/favourites', [
-            "items" => $this->ticketsRepository->getTickets()
-        ]);
-    }
 }

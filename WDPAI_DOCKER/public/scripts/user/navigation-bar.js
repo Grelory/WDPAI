@@ -1,10 +1,6 @@
-
-const homePath = '/user/'
-
 const icons = [
 
     { 'letter': 'H', 'fullName': 'Dashboard', 'handler': () => goto('/user/dashboard')},
-    { 'letter': 'F', 'fullName': 'Favourites', 'handler': () => goto('/user/favourites')},
     { 'letter': 'B', 'fullName': 'Buy', 'handler': () => goto('/user/buy')},
     { 'letter': 'A', 'fullName': 'Available', 'handler': () => goto('/user/available')},
     { 'letter': 'E', 'fullName': 'Expired', 'handler': () => goto('/user/expired')},
