@@ -5,33 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
+
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-admin-dc.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
     
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
-    <script src="/public/scripts/shared/logo.js" defer></script>
 
     <title>Locations</title>
 </head>
 
 <body>
-    <div id="content" class="flex-column-center-center">
-        <div id="add-content">
-            <form class="location-form" action="/admin/locations" method="POST">
-                <label for="location">Location:</label>
-                <input type="text" id="location" name="location" placeholder="Enter location" required>
-                <button type="submit">Add</button>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="grid-row-080r-auto">
+        <div id="add-content" class="flex-ccc">
+            <form class="location-form flex-ccc" action="/admin/locations" method="POST">
+                <input type="text" id="location" class="qb-input-1" name="location" placeholder="Enter location" required>
+                <button type="submit" class="qb-button-1 m-top-010">Add</button>
             </form>
         </div>
-        <div id="display-content">
+        <div id="display-content" class="flex-csc cs-full--080r p-bottom-010">
             <?php foreach($items as $item): ?>
-                <div class="location">
-                    <span><?= $item->getLocationId(); ?></span>
-                    <span><?= $item->getLocationName(); ?></span>
+                <div class="location flex-rcc m-top-005">
+                    <div><?= $item->getLocationId(); ?></div>
+                    <div><?= $item->getLocationName(); ?></div>
                 </div>
             <?php endforeach; ?>
         </div>

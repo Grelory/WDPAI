@@ -5,33 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
+
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-admin-dc.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
     
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
-    <script src="/public/scripts/shared/logo.js" defer></script>
 
     <title>Providers</title>
 </head>
 
 <body>
-    <div id="content" class="flex-column-center-center">
-        <div id="add-content">
-            <form class="location-form" action="/admin/providers" method="POST">
-                <label for="provider">Transport Type:</label>
-                <input type="text" id="provider" name="provider" placeholder="Enter provider" required>
-                <button type="submit">Add</button>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="grid-row-080r-auto">
+        <div id="add-content" class="flex-ccc">
+            <form class="providers-form flex-ccc" action="/admin/providers" method="POST">
+                <input type="text" id="provider" class="qb-input-1" name="provider" placeholder="Enter provider" required>
+                <button type="submit" class="qb-button-1 m-top-010">Add</button>
             </form>
         </div>
-        <div id="display-content">
+        <div id="display-content" class="flex-csc cs-full--080r p-bottom-010">
             <?php foreach($items as $item): ?>
-                <div class="provider">
-                    <span><?= $item->getProviderId(); ?></span>
-                    <span><?= $item->getProviderName(); ?></span>
+                <div class="provider flex-rcc m-top-005">
+                    <div><?= $item->getProviderId(); ?></div>
+                    <div><?= $item->getProviderName(); ?></div>
                 </div>
             <?php endforeach; ?>
         </div>

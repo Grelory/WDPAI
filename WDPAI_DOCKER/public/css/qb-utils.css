@@ -3,6 +3,74 @@
     overflow: auto;
 }
 
+.cs-full--080r {
+    max-height: calc(80vh - 8rem);
+    overflow: auto;
+}
+
+.cs-full--138r {
+    max-height: calc(80vh - 13.8rem);
+    overflow: auto;
+}
+
+.cs-full--145r {
+    max-height: calc(80vh - 14.5rem);
+    overflow: auto;
+}
+
+.m-top-0025 {
+    margin-top: 0.25rem;
+}
+
+.m-top-005 {
+    margin-top: 0.5rem;
+}
+
 .m-top-010 {
     margin-top: 1rem;
+}
+
+.p-bottom-010 {
+    padding-bottom: 1rem;
+}
+
+.grid-row-080r-auto {
+    display: grid;
+    grid-template-rows: 8rem auto;
+}
+
+.grid-row-138r-auto {
+    display: grid;
+    grid-template-rows: 13.8rem auto;
+}
+
+.grid-row-145r-auto {
+    display: grid;
+    grid-template-rows: 14.5rem auto;
+}
+
+@media screen and (max-width: 500px) {
+    .grid-row-080r-auto {
+        grid-template-rows: 6.4rem auto;
+    }
+
+    .cs-full--080r {
+        max-height: calc(80vh - 6.4rem);
+    }
+
+    .grid-row-138r-auto {
+        grid-template-rows: 11.04rem auto;
+    }
+
+    .cs-full--138r {
+        max-height: calc(80vh - 11.04rem);
+    }
+
+    .grid-row-145r-auto {
+        grid-template-rows: 11.6rem auto;
+    }
+
+    .cs-full--145r {
+        max-height: calc(80vh - 11.6rem);
+    }
 }

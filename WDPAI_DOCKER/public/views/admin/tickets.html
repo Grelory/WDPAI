@@ -5,56 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
+
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-admin-dc.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
     
     <script src="/public/scripts/admin/tickets-to-buy.js" defer></script>
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
-    <script src="/public/scripts/shared/logo.js" defer></script>
 
     <title>Tickets</title>
 </head>
 
 <body>
-    <div id="content" class="flex-column-center-center">
-        <div id="add-content">
-            <form class="tickets-to-buy-form" action="/admin/tickets" method="POST">
-                <label for="provider">Provider:</label>
-                <select id="provider" name="provider" required>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="grid-row-145r-auto">
+        <div id="add-content" class="flex-ccc">
+            <form class="tickets-to-buy-form flex-ccc" action="/admin/tickets" method="POST">
+                <select id="provider" class="qb-select-1 m-top-0025" name="provider" required>
                     <option value="">Select</option>
                 </select>
-
-
-                <label for="location">Location:</label>
-                <select id="location" name="location" required>
+                <select id="location" class="qb-select-1 m-top-0025" name="location" required>
                     <option value="">Select</option>
                 </select>
-            
-                <label for="transport-type">Transport Type:</label>
-                <select id="transport-type" name="transport-type" required>
+                <select id="transport-type" class="qb-select-1 m-top-0025" name="transport-type" required>
                     <option value="">Select</option>
                 </select>
-            
-                <label for="ticket-type">Ticket Type:</label>
-                <select id="ticket-type" name="ticket-type" required>
+                <select id="ticket-type" class="qb-select-1 m-top-0025" name="ticket-type" required>
                     <option value="">Select</option>
                 </select>
-            
-                <button type="submit">Add</button>
+                <button type="submit" class="qb-button-1 m-top-010">Add</button>
             </form>
         </div>
-        <div id="display-content">
+        <div id="display-content" class="flex-csc cs-full--145r p-bottom-010">
             <?php foreach($items as $item): ?>
-                <div class="ticket-to-buy">
-                    <span><?= $item->getTicketToBuyId(); ?></span>
-                    <span><?= $item->getProviderName(); ?></span>
-                    <span><?= $item->getLocationName(); ?></span>
-                    <span><?= $item->getTransportTypeName(); ?></span>
-                    <span><?= $item->getTicketTypeName(); ?></span>
+                <div class="ticket-to-buy flex-rcc flex-wrap m-top-005">
+                    <div><?= $item->getTicketToBuyId(); ?></div>
+                    <div><?= $item->getProviderName(); ?></div>
+                    <div><?= $item->getLocationName(); ?></div>
+                    <div><?= $item->getTransportTypeName(); ?></div>
+                    <div><?= $item->getTicketTypeName(); ?></div>
                 </div>
             <?php endforeach; ?>
         </div>

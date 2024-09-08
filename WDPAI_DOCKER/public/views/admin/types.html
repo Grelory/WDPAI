@@ -5,40 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/content.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/logo.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/admin-content.css">
+
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-admin-dc.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
 
     <script src="/public/scripts/admin/navigation-bar.js" defer></script>
-    <script src="/public/scripts/shared/logo.js" defer></script>
 
     <title>Types</title>
 </head>
 
 <body>
-    <div id="content" class="flex-column-center-center">
-        <div id="add-content">
-            <form class="location-form" action="/admin/types" method="POST">
-                <label for="ticket-type">Transport Type:</label>
-                <input type="text" id="ticket-type" name="ticket-type" placeholder="Enter transport type" required>
-                <input type="number" id="interval-number" name="interval-number" placeholder="Enter interval" required>
-                <select id="interval-name" name="interval-name" required>
+    <?php include_once __DIR__ . '/../logo.html';?>
+    <div id="content" class="grid-row-138r-auto">
+        <div id="add-content" class="flex-ccc">
+            <form class="types-form flex-ccc" action="/admin/types" method="POST">
+                <input type="text" id="ticket-type" class="qb-input-1 m-top-0025" name="ticket-type" placeholder="Enter transport type" required>
+                <input type="number" id="interval-number" class="qb-input-1 m-top-0025" name="interval-number" placeholder="Enter interval" required>
+                <select id="interval-name" class="qb-select-1 m-top-0025" name="interval-name" required>
                     <?php foreach($intervals as $interval): ?>
                         <option value="<?= $interval->getIntervalName(); ?>"><?= $interval->getIntervalName(); ?></option>
                     <?php endforeach; ?>
                 </select>
-                <button type="submit">Add</button>
+                <button type="submit" class="qb-button-1 m-top-010">Add</button>
             </form>
         </div>
-        <div id="display-content">
+        <div id="display-content" class="flex-csc cs-full--138r p-bottom-010">
             <?php foreach($types as $type): ?>
-                <div class="ticket-type">
-                    <span><?= $type->getTicketTypeId(); ?></span>
-                    <span><?= $type->getTicketTypeName(); ?></span>
-                    <span><?= $type->getTicketTypeExpiryInterval(); ?></span>
+                <div class="ticket-type flex-rcc m-top-005">
+                    <div><?= $type->getTicketTypeId(); ?></div>
+                    <div><?= $type->getTicketTypeName(); ?></div>
+                    <div><?= $type->getTicketTypeExpiryInterval(); ?></div>
                 </div>
             <?php endforeach; ?>
         </div>

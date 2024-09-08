@@ -1,0 +1,31 @@
+#display-content > div {
+    border: 1px solid white;
+    width: 20rem;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+    color: white;
+}
+
+#display-content > div > div {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+@media screen and (max-width: 500px) {
+    .qb-input-1 {
+        width: calc(100% - 50px);
+    }
+
+    .qb-button-1 {
+        width: 8rem;
+    }
+    
+    #display-content > div {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 1.6rem;
+        width: 10rem;
+    }
+}
