@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-messages.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
     
-    <script src="/public/scripts/admin/navigation-bar.js" defer></script>
+    <script src="/public/scripts/admin/buttons.js" defer></script>
 
     <title>Admin Dashboard</title>
 </head>
 
 <body>
     <?php include_once __DIR__ . '/../logo.html';?>
+    <?php include_once __DIR__ . '/navigation-bar.html';?>
     <div id="content" class="flex-ccc">
         <div id="dashboard-message" class="message flex-ccc">
             <div style="text-align: center;">Hello <?= $name; ?>!</div>

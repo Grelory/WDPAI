@@ -5,6 +5,22 @@
     align-items: center;
 }
 
+.flex-ccc-and-rsb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+    .flex-ccc-and-rsb {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
 .flex-csc {
     display: flex;
     flex-direction: column;
@@ -51,3 +67,4 @@
 .flex-gap-020 {
     gap: 2rem;
 }
+

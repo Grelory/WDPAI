@@ -5,22 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-
-
     <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-tickets.css">
-    
-    <script src="/public/scripts/user/navigation-bar.js" defer></script>
 
-    
+    <script src="/public/scripts/user/buttons.js" defer></script>
+
     <title>Available</title>
 </head>
 
 <body>
     <?php include_once __DIR__ . '/../logo.html';?>
+    <?php include_once __DIR__ . '/navigation-bar.html';?>
     <div id="content" class="flex-rcc">
         <div id="tickets" class="flex-rcc flex-wrap flex-gap-010 cs-full">
             <?php foreach($items as $item): ?>

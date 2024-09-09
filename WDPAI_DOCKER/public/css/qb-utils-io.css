@@ -26,10 +26,6 @@
     width: 10rem;
 }
 
-.qb-button-1:hover {
-    background-color: gray;
-}
-
 .qb-input-1, .qb-button-1 {
     border: 1px solid white;
     padding: 1rem;
@@ -37,6 +33,21 @@
     border-radius: 2rem;
     text-align: center;
     color: white;
+}
+
+
+.qb-icon-1 {
+    border: 1px solid white;
+    background-color: black;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.qb-button-1:hover, .qb-icon-1:hover {
+    background-color: gray;
 }
 
 

@@ -9,12 +9,21 @@ body {
 #content {
     position: fixed;
     top: 20vh;
-    left: 5vw;
-    width: 90vw;
+    left: 4rem;
+    width: calc(100vw - 8rem);
     height: 80vh;
 }
 
 #content > * {
     position: relative;
     width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    #content {
+        top: 20vh;
+        left: 0;
+        width: 100vw;
+        height: calc(80vh - 4rem);
+    }
 }

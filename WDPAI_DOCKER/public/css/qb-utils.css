@@ -50,12 +50,16 @@
 }
 
 @media screen and (max-width: 500px) {
+    .cs-full {
+        max-height: calc(80vh - 4rem);
+    }
+
     .grid-row-080r-auto {
         grid-template-rows: 6.4rem auto;
     }
 
     .cs-full--080r {
-        max-height: calc(80vh - 6.4rem);
+        max-height: calc(80vh - 10.4rem);
     }
 
     .grid-row-138r-auto {
@@ -63,7 +67,7 @@
     }
 
     .cs-full--138r {
-        max-height: calc(80vh - 11.04rem);
+        max-height: calc(80vh - 15.04rem);
     }
 
     .grid-row-145r-auto {
@@ -71,6 +75,6 @@
     }
 
     .cs-full--145r {
-        max-height: calc(80vh - 11.6rem);
+        max-height: calc(80vh - 15.6rem);
     }
 }

@@ -5,21 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-
     <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-admin-dc.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
     
-    <script src="/public/scripts/admin/navigation-bar.js" defer></script>
+    <script src="/public/scripts/admin/buttons.js" defer></script>
 
     <title>Locations</title>
 </head>
 
 <body>
     <?php include_once __DIR__ . '/../logo.html';?>
+    <?php include_once __DIR__ . '/navigation-bar.html';?>
     <div id="content" class="grid-row-080r-auto">
         <div id="add-content" class="flex-ccc">
             <form class="location-form flex-ccc" action="/admin/locations" method="POST">

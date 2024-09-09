@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" type="text/css" href="/public/css/shared/navigation-bar.css">
-
     <link rel="stylesheet" type="text/css" href="/public/css/qb-common.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-flex.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils-io.css">
     <link rel="stylesheet" type="text/css" href="/public/css/qb-utils.css">
 
-    <script src="/public/scripts/user/navigation-bar.js" defer></script>
+    <script src="/public/scripts/user/buttons.js" defer></script>
     <script src="/public/scripts/user/tickets-to-buy.js" defer></script>
 
     <title>Buy</title>
@@ -20,6 +18,7 @@
 
 <body>
     <?php include_once __DIR__ . '/../logo.html';?>
+    <?php include_once __DIR__ . '/navigation-bar.html';?>
     <div id="content" class="flex-ccc">
         <form class="ticket-form flex-ccc flex-gap-005 cs-full" action="/user/buy" method="POST">
             <label for="provider" class="qb-label-1">Provider:</label>
