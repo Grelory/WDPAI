@@ -20,6 +20,8 @@ class RegistrationController extends AppController {
             $_POST['userName'], 
             $_POST['email'], 
             $_POST['password']
-        );    
+        );
+
+        $this->redirect('/auth/login');
     }
 }

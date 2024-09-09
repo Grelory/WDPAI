@@ -8,8 +8,6 @@ require_once 'src/controllers/UserViewController.php';
 require_once 'src/controllers/AdminViewController.php';
 require_once 'src/controllers/TicketsResource.php';
 
-require_once 'Database.php';
-
 $controller = new AppController();
 $loginController = new LoginController();
 $userViewController = new UserViewController();

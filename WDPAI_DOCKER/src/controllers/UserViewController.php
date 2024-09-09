@@ -21,9 +21,7 @@ class UserViewController extends AppController {
 
     public function buy($user) {
         if ($this->isGet()) {
-            return $this->render('user/buy', [
-                "items" => $this->ticketsRepository->getTickets()
-            ]);
+            return $this->render('user/buy');
         }
 
         $this->ticketsRepository->saveTicket(

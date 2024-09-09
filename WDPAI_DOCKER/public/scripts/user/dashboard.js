@@ -1,1 +1,0 @@
-document.querySelector('body div#content').innerHTML = '<p>User dashboard has not been implemented yet</p>'
