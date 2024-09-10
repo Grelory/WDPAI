@@ -87,12 +87,12 @@ $routing = [
     'resources/tickets/to-buy' => [
         'action' => array($ticketsResource, 'ticketsToBuy'),
         'params' => [],
-        'access' => []
+        'access' => ['ADMIN', 'USER']
     ],
     'resources/tickets/unmatched-to-buy' => [
         'action' => array($ticketsResource, 'unmatchedTicketsToBuy'),
         'params' => [],
-        'access' => []
+        'access' => ['ADMIN']
     ]
 ];
 

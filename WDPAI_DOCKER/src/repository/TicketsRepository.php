@@ -24,6 +24,7 @@ class TicketsRepository extends Repository {
 	            INNER JOIN transport_types tr ON tr.transport_type_id = t.transport_type_id
 	            INNER JOIN ticket_types ti ON ti.ticket_type_id = t.ticket_type_id
             WHERE t.user_id = ? and t.expiry_time > now()
+            ORDER BY t.purchase_time
         ');
         $stmt->execute([$id]);
 
@@ -48,6 +49,7 @@ class TicketsRepository extends Repository {
 	            INNER JOIN transport_types tr ON tr.transport_type_id = t.transport_type_id
 	            INNER JOIN ticket_types ti ON ti.ticket_type_id = t.ticket_type_id
             WHERE t.user_id = ? and t.expiry_time < now()
+            ORDER BY t.expiry_time DESC
         ');
         $stmt->execute([$id]);
 
