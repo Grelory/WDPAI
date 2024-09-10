@@ -1,4 +1,4 @@
-const options = [
+const buttonOptions = [
     { name: 'dashboard', path: '/admin/dashboard'},
     { name: 'tickets', path: '/admin/tickets'},
     { name: 'locations', path: '/admin/locations'},
@@ -8,7 +8,7 @@ const options = [
     { name: 'logout', path: '/auth/logout'}
 ]
 
-options.forEach((option) => {
+buttonOptions.forEach((option) => {
     document.querySelectorAll('div.go-to-' + option['name']).forEach(button => {
         button.addEventListener('click', () => {
             window.location = option['path'];
